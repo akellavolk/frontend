@@ -61,10 +61,17 @@
   document.addEventListener('keydown', (e) => {
     console.log(e);
     const sound = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
     if (sound) {
+      key.classList.add('playing');
       sound.play();
     }
     return;
+  }
+  )
+  document.addEventListener('transitionend', (e) => {
+    console.log(e);
+    e.target.classList.remove('playing');
   })
 </script>
 
